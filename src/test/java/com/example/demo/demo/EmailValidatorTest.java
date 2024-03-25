@@ -63,6 +63,14 @@ public class EmailValidatorTest {
                     "Die E-Mail-Adresse mit einem Semikolon sollte als ungültig erkannt werden.");
     }
 
+    @Test
+    public void testEmailValidationWithSubdomains() {
+        // E-Mail-Adresse mit Subdomains sollte als gültig erkannt werden.
+        String validEmail = "test.email@subdomain.example.com";
+        assertTrue(EmailValidator.isValidEmail(validEmail),
+                   "Die E-Mail-Adresse mit Subdomains sollte als gültig erkannt werden.");
+    }
+
 
     
 }
