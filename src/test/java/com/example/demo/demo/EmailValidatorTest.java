@@ -71,11 +71,22 @@ public class EmailValidatorTest {
                    "Die E-Mail-Adresse mit Subdomains sollte als gültig erkannt werden.");
     }
 
+    @Test
     public void testEmailValidationWithTopLevelDomainOnly() {
         // Eine E-Mail-Adresse, die nur aus einem TLD besteht, sollte als ungültig erkannt werden.
         String invalidEmail = "test@.com";
         assertFalse(EmailValidator.isValidEmail(invalidEmail),
                     "Die E-Mail-Adresse, die nur aus einem TLD besteht, sollte als ungültig erkannt werden.");
+    }
+
+    @Test
+    public void testEmailValidationWithIpAddress() {
+        // Überprüfen, ob Ihre Methode eine E-Mail mit einer IP-Adresse anstelle einer Domain unterstützt. In diesem Fall sollte es ungültig sein.
+        String emailWithIpAddress = "user@[192.168.1.1]";
+        
+        // Hier angenommen, dass es als ungültig betrachtet wird:
+        assertFalse(EmailValidator.isValidEmail(emailWithIpAddress),
+                    "Die E-Mail mit einer IP-Adresse anstelle einer Domain sollte als ungültig erkannt werden.");
     }
 
 
