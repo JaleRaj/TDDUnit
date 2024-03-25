@@ -15,7 +15,6 @@ public class EmailValidatorTest {
                    "Die E-Mail-Adresse sollte als gültig anerkannt werden.");
     }
 
-
     @Test
     public void testEmailValidationWithMissingAtSymbol() {
         // Eine E-Mail-Adresse ohne "@"-Zeichen sollte als ungültig erkannt werden.
@@ -31,5 +30,15 @@ public class EmailValidatorTest {
         assertFalse(EmailValidator.isValidEmail(invalidEmail),
                     "Die E-Mail-Adresse mit mehreren '@' sollte als ungültig erkannt werden.");
     }
+
+    @Test
+    public void testEmailValidationWithNoLocalPart() {
+        // Eine E-Mail-Adresse ohne lokalen Teil vor dem "@" sollte als ungültig erkannt werden.
+        String invalidEmail = "@example.com";
+        assertFalse(EmailValidator.isValidEmail(invalidEmail),
+                    "Die E-Mail-Adresse ohne lokalen Teil sollte als ungültig erkannt werden.");
+    }
+
+
     
 }
