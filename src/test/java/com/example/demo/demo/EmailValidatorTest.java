@@ -1,5 +1,6 @@
 package com.example.demo.demo;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
@@ -12,6 +13,15 @@ public class EmailValidatorTest {
         String validEmail = "test@example.com";
         assertTrue(EmailValidator.isValidEmail(validEmail),
                    "Die E-Mail-Adresse sollte als gültig anerkannt werden.");
+    }
+
+    
+    @Test
+    public void testEmailValidationWithMissingAtSymbol() {
+        // Eine E-Mail-Adresse ohne "@"-Zeichen sollte als ungültig erkannt werden.
+        String emailWithoutAt = "testexample.com";
+        assertFalse(EmailValidator.isValidEmail(emailWithoutAt),
+                    "Die E-Mail-Adresse ohne '@' sollte als ungültig erkannt werden.");
     }
     
 }
