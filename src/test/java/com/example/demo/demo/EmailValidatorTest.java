@@ -81,14 +81,19 @@ public class EmailValidatorTest {
 
     @Test
     public void testEmailValidationWithIpAddress() {
-        // Überprüfen, ob Ihre Methode eine E-Mail mit einer IP-Adresse anstelle einer Domain unterstützt. In diesem Fall sollte es ungültig sein.
+        // Überprüfen, ob die Methode eine E-Mail mit einer IP-Adresse anstelle einer Domain als ungültig erkennt wird.
         String emailWithIpAddress = "user@[192.168.1.1]";
         
-        // Hier angenommen, dass es als ungültig betrachtet wird:
         assertFalse(EmailValidator.isValidEmail(emailWithIpAddress),
                     "Die E-Mail mit einer IP-Adresse anstelle einer Domain sollte als ungültig erkannt werden.");
     }
 
-
-    
+    @Test
+    public void testEmailValidationWithTrailingDot() {
+        // Eine E-Mail-Adresse mit einem Punkt am Ende der Domain sollte als ungültig erkannt werden.
+        String invalidEmail = "test@example.com.";
+        assertFalse(EmailValidator.isValidEmail(invalidEmail),
+                    "Die E-Mail-Adresse mit einem Punkt am Ende der Domain sollte als ungültig erkannt werden.");
+    }
+ 
 }
