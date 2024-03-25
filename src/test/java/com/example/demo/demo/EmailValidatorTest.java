@@ -39,6 +39,14 @@ public class EmailValidatorTest {
                     "Die E-Mail-Adresse ohne lokalen Teil sollte als ungültig erkannt werden.");
     }
 
+    @Test
+    public void testEmailValidationWithNoDomain() {
+        // Eine E-Mail-Adresse ohne Domain nach dem "@" sollte als ungültig erkannt werden.
+        String invalidEmail = "test@";
+        assertFalse(EmailValidator.isValidEmail(invalidEmail),
+                    "Die E-Mail-Adresse ohne Domain sollte als ungültig erkannt werden.");
+    }
+
 
     
 }
