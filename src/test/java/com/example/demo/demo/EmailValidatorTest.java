@@ -47,6 +47,22 @@ public class EmailValidatorTest {
                     "Die E-Mail-Adresse ohne Domain sollte als ungültig erkannt werden.");
     }
 
+    @Test
+    public void testEmailValidationWithInvalidCharacters() {
+        // Eine E-Mail-Adresse mit ungültigen Zeichen sollte als ungültig erkannt werden.
+        // Beispiel für ungültige Zeichen: Leerzeichen, Kommas, Semikolons, etc.
+        String invalidEmailWithSpace = "test @example.com";
+        String invalidEmailWithComma = "test,email@example.com";
+        String invalidEmailWithSemicolon = "test;email@example.com";
+
+        assertFalse(EmailValidator.isValidEmail(invalidEmailWithSpace),
+                    "Die E-Mail-Adresse mit einem Leerzeichen sollte als ungültig erkannt werden.");
+        assertFalse(EmailValidator.isValidEmail(invalidEmailWithComma),
+                    "Die E-Mail-Adresse mit einem Komma sollte als ungültig erkannt werden.");
+        assertFalse(EmailValidator.isValidEmail(invalidEmailWithSemicolon),
+                    "Die E-Mail-Adresse mit einem Semikolon sollte als ungültig erkannt werden.");
+    }
+
 
     
 }
