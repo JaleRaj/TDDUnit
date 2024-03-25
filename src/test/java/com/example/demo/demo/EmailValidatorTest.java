@@ -71,6 +71,13 @@ public class EmailValidatorTest {
                    "Die E-Mail-Adresse mit Subdomains sollte als gültig erkannt werden.");
     }
 
+    public void testEmailValidationWithTopLevelDomainOnly() {
+        // Eine E-Mail-Adresse, die nur aus einem TLD besteht, sollte als ungültig erkannt werden.
+        String invalidEmail = "test@.com";
+        assertFalse(EmailValidator.isValidEmail(invalidEmail),
+                    "Die E-Mail-Adresse, die nur aus einem TLD besteht, sollte als ungültig erkannt werden.");
+    }
+
 
     
 }
