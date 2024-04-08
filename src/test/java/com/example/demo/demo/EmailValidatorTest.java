@@ -95,5 +95,12 @@ public class EmailValidatorTest {
         assertFalse(EmailValidator.isValidEmail(invalidEmail),
                     "Die E-Mail-Adresse mit einem Punkt am Ende der Domain sollte als ungültig erkannt werden.");
     }
- 
+    
+    @Test
+    public void testEmailValidationWithNull() {
+        // Nullmitgeben
+        String invalidEmail = null;
+        assertFalse(EmailValidator.isValidEmail(invalidEmail),
+                    "Null sollte als ungültig erkannt werden.");
+    }
 }
