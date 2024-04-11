@@ -15,3 +15,7 @@ public class EmailValidator {
         return EMAIL_PATTERN.matcher(email).matches();
     }
 }
+
+public class EmailValidator2{
+
+}
