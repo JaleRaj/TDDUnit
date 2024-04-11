@@ -14,8 +14,9 @@ public class EmailValidator {
         }
         return EMAIL_PATTERN.matcher(email).matches();
     }
+
+    public static boolean isValidEmail2(String email) {
+        return false;
+    }
 }
 
-public class EmailValidator2{
-
-}
